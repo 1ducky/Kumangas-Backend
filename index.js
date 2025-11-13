@@ -1,6 +1,5 @@
 const express=require('express')
 
-
 //Fetch
 const Manga =require('./FetchModule/Manga')
 
@@ -34,9 +33,12 @@ App.post('/manga', async (req,res) =>{
     
         const Limit= Data?.limit | 0
         const Offset=Data?.offset | 0
-        const Order=Object.entries(Data.order)
+        const Order=Object.entries(Data.order || {})
             .map(([key,value]) => `&order[${key}]=${value}`).join('')
-        const Fillter =Object.entries(Data.filter).map(([key,value]) => `&${key}=${value}`)
+
+        const Fillter =Object.entries(Data.filter || {})
+            .map(([key,value]) => `&${key}=${value}`).join('')
+
         const result = await Manga(Limit,Offset,Order,Fillter)
         
 
@@ -52,14 +54,15 @@ App.post('/manga', async (req,res) =>{
             total: result.total
             // total : result.total
         })
-    }catch{
-        const Data= req?.body?.request || null
-        const Order=Object.entries(Data.order)
+    }catch(err){
+        const Data= req?.body?.request || {}
+        const Order=Object.entries(Data.order || {})
             .map(([key,value]) => `&order[${key}]=${value}`).join('')
-        const Fillter =Object.entries(Data.fillter).map(([key,value]) => `&${key}=${value}`)
+        const Fillter =Object.entries(Data.fillter || {}).map(([key,value]) => `&${key}=${value}`)
         return res.status(500).json({
             massage : "Internal Error",
-            "error" : Order
+            "param" : [Order,Fillter],
+            "details" : err
         })
     }
 })

@@ -1,4 +1,4 @@
-module.exports = async function Newer(Limit,Offset=0,Order=null,Filter=null) {
+module.exports = async function Newer(Limit,Offset=0,Order='',Filter='') {
     const BaseURL='https://api.mangadex.org'
     const limit=Limit || 10
     try{
