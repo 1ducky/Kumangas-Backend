@@ -36,17 +36,20 @@ App.post('/manga', async (req,res) =>{
         const Order=Object.entries(Data.order || {})
             .map(([key,value]) => `&order[${key}]=${value}`).join('')
 
+        const Advanced=Object.entries(Data.advanced || {})
+            .map(([key,value]) => `&${key}[]=${value}`).join('')
+
         const Fillter =Object.entries(Data.filter || {})
             .map(([key,value]) => `&${key}=${value}`).join('')
 
-        const result = await Manga(Limit,Offset,Order,Fillter)
+        const result = await Manga(Limit,Offset,Order,Fillter,Advanced)
         
 
         
 
         return res.status(200).json({
             Status : 'Success',
-            param: Order,
+            param: [Order,Fillter],
             response : result.response,
             data : result.data,
             limit : Limit,

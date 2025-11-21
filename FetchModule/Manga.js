@@ -1,8 +1,8 @@
-module.exports = async function Newer(Limit,Offset=0,Order='',Filter='') {
+module.exports = async function Newer(Limit,Offset=0,Order='',Filter='',Advanced='') {
     const BaseURL='https://api.mangadex.org'
     const limit=Limit || 10
     try{
-        const res=await fetch(`${BaseURL}/manga?limit=${limit}&offset=${Offset}&includes[]=cover_art${Order}${Filter}`)
+        const res=await fetch(`${BaseURL}/manga?limit=${limit}&offset=${Offset}&includes[]=cover_art${Order}${Filter}${Advanced}`)
         const Data=await res.json()
         if(!Array.isArray(Data.data) || Data.data.length === 0){
             console.log('invalid Obejct')
