@@ -1,4 +1,4 @@
-module.exports = async function Newer(Limit,Offset=0,Order='',Filter='',Advanced='') {
+module.exports = async function Mangas(Limit,Offset=0,Order='',Filter='',Advanced='') {
     const BaseURL='https://api.mangadex.org'
     const limit=Limit || 10
     try{
