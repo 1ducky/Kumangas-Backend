@@ -2,7 +2,7 @@ module.exports = async function Detail(ID) {
     const BaseURL='https://api.mangadex.org'
 
     try{
-        const res=await fetch(`${BaseURL}/manga/${ID}`)
+        const res=await fetch(`${BaseURL}/manga/${ID}?includes[]=cover_art&includes[]=artist&includes[]=author&includes[]=tag`)
         const Data=await res.json()
         if(!Data.data){
             console.log('invalid Obejct Detail')

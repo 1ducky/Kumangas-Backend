@@ -53,18 +53,15 @@ App.post('/detail', async (req,res) =>{
             Feed(ID,Limit,Offset,Order,Fillter,Advanced)
         ])
         
-
-        
-
         return res.status(200).json({
             Status : 'Success',
             param: [Order,Fillter],
             response : 'Detail',
-            data : {
-                details : DetailDatas,
-                Static : StaticDatas,
-                feed : FeedDatas
-            },
+            data : [
+                {details : DetailDatas},
+                {Static : StaticDatas},
+                {feed : FeedDatas}
+            ],
             limit : Limit,
             offset : Offset,
 
@@ -109,9 +106,6 @@ App.post('/manga', async (req,res) =>{
 
         const result = await Manga(Limit,Offset,Order,Fillter,Advanced)
         
-
-        
-
         return res.status(200).json({
             Status : 'Success',
             param: [Order,Fillter],
