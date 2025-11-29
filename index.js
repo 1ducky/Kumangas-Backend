@@ -59,7 +59,7 @@ App.post('/detail', async (req,res) =>{
             response : 'Detail',
             data : [
                 {details : DetailDatas},
-                {Static : StaticDatas},
+                {static : StaticDatas},
                 {feed : FeedDatas}
             ],
             limit : Limit,
