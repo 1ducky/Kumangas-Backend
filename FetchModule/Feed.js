@@ -9,7 +9,7 @@ module.exports = async function Feed(ID,Limit,Offset=0,Order='',Filter='',Advanc
             return Data;
         } else {
             console.log("✔️Fetched Feed Data");
-            return Data;
+            return Data.data
         }
 
     }catch(error){

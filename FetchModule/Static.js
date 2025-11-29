@@ -11,7 +11,7 @@ module.exports = async function Static(ID) {
         }else{
             console.log('✔️Getting Fecth Statistics Data')
 
-            return Data
+            return Data.statistics
         }
     }catch(error){
         console.log('Failed Fetching Data')

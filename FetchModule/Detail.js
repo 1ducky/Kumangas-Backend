@@ -11,7 +11,7 @@ module.exports = async function Detail(ID) {
         }else{
             console.log('✔️Getting Fecth Detail Data')
 
-            return Data
+            return Data.data
         }
     }catch(error){
         console.log('Failed Fetching Data')
